@@ -2,20 +2,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Executive Mode</title>
 
 <style>
+
 body{
 background:#000;
 color:#fff;
-font-family:Arial;
+font-family:Arial, sans-serif;
 margin:0;
+font-size:16px;
 }
 
 header{
 text-align:center;
-padding:20px;
-font-size:26px;
+padding:18px;
+font-size:22px;
 background:#111;
 }
 
@@ -23,13 +26,17 @@ nav{
 display:flex;
 justify-content:space-around;
 background:#222;
-padding:10px;
+padding:12px 5px;
+position:sticky;
+top:0;
 }
 
 nav button{
 background:none;
 border:none;
 color:#aaa;
+font-size:16px;
+padding:10px 8px;
 cursor:pointer;
 }
 
@@ -39,7 +46,7 @@ color:#fff;
 
 .tab{
 display:none;
-padding:20px;
+padding:18px;
 }
 
 .active{
@@ -47,41 +54,74 @@ display:block;
 }
 
 .section{
-margin-bottom:20px;
-padding:15px;
+margin-bottom:18px;
+padding:14px;
 background:#111;
-border-radius:6px;
+border-radius:8px;
 }
 
 input,select{
 background:#222;
 color:#fff;
 border:1px solid #333;
-padding:5px;
+padding:8px;
+font-size:15px;
+width:100%;
+box-sizing:border-box;
+margin-top:6px;
 }
 
 button{
 background:#333;
 color:#fff;
 border:none;
-padding:6px 12px;
+padding:10px 14px;
+font-size:15px;
 cursor:pointer;
-margin-top:10px;
+margin-top:12px;
+border-radius:6px;
 }
 
 .directive{
 font-size:18px;
 font-weight:bold;
-padding:10px;
-border-radius:6px;
+padding:12px;
+border-radius:8px;
 margin-bottom:15px;
+text-align:center;
 }
 
 .green{ background:#063; }
 .gray{ background:#333; }
 .red{ background:#500; }
 
-canvas{ margin-top:10px; }
+canvas{
+display:block;
+margin:12px auto;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 600px){
+
+body{
+font-size:17px;
+}
+
+nav button{
+font-size:17px;
+padding:12px 6px;
+}
+
+header{
+font-size:20px;
+}
+
+.directive{
+font-size:19px;
+}
+
+}
+
 </style>
 </head>
 
@@ -96,7 +136,8 @@ canvas{ margin-top:10px; }
 <button onclick="showTab('recovery')">Recovery</button>
 </nav>
 
-<!-- DASHBOARD -->
+<!-- ================= DASHBOARD ================= -->
+
 <section id="dashboard" class="tab active">
 
 <div class="section">
@@ -115,12 +156,12 @@ canvas{ margin-top:10px; }
 
 <div class="section">
 <h3>Recovery Index</h3>
-<div id="performanceIndex"></div>
+<div id="performanceIndex">Not logged today</div>
 </div>
 
 <div class="section">
 <h3>Latest Measurement</h3>
-<div id="latestMeasurement"></div>
+<div id="latestMeasurement">No data</div>
 </div>
 
 <div class="section">
@@ -130,11 +171,12 @@ canvas{ margin-top:10px; }
 
 </section>
 
-<!-- WORKOUT -->
+<!-- ================= WORKOUT ================= -->
+
 <section id="workout" class="tab">
 
 <div id="trainingDirective" class="directive gray">
-Log recovery first
+Log Recovery First
 </div>
 
 <h3 id="dayTitle"></h3>
@@ -166,34 +208,36 @@ Log recovery first
 
 </section>
 
-<!-- MEASUREMENTS -->
+<!-- ================= MEASUREMENTS ================= -->
+
 <section id="measurements" class="tab">
 
 <div class="section">
 <h3>Measurements</h3>
 
-Weight<br>
-<input type="number" id="m_weight"><br><br>
+<label>Weight (kg)</label>
+<input type="number" id="m_weight">
 
-Waist<br>
-<input type="number" id="m_waist"><br><br>
+<label>Waist (inches)</label>
+<input type="number" id="m_waist">
 
-Chest<br>
-<input type="number" id="m_chest"><br><br>
+<label>Chest (inches)</label>
+<input type="number" id="m_chest">
 
-Arms<br>
-<input type="number" id="m_arms"><br><br>
+<label>Arms (inches)</label>
+<input type="number" id="m_arms">
 
-Thighs<br>
-<input type="number" id="m_thighs"><br><br>
+<label>Thighs (inches)</label>
+<input type="number" id="m_thighs">
 
-Shoulders<br>
-<input type="number" id="m_shoulders"><br><br>
+<label>Shoulders (inches)</label>
+<input type="number" id="m_shoulders">
 
-Body Fat<br>
-<input type="number" id="m_bodyfat"><br><br>
+<label>Body Fat (%)</label>
+<input type="number" id="m_bodyfat">
 
-<button onclick="saveMeasurement()">Save</button>
+<button onclick="saveMeasurement()">Save Measurement</button>
+
 </div>
 
 <div class="section">
@@ -203,7 +247,8 @@ Body Fat<br>
 
 </section>
 
-<!-- RECOVERY -->
+<!-- ================= RECOVERY ================= -->
+
 <section id="recovery" class="tab">
 
 <div class="section">
@@ -215,35 +260,38 @@ Body Fat<br>
 <label><input type="checkbox" id="rec_sharp"> Mentally sharp within 10 min</label><br>
 <label><input type="checkbox" id="rec_vital"> Morning vitality present</label><br><br>
 
-CNS Readiness<br>
+<label>CNS Readiness</label>
 <select id="rec_cns">
 <option value="1">1 – Foggy</option>
 <option value="2">2 – Heavy</option>
 <option value="3">3 – Normal</option>
 <option value="4">4 – Alert</option>
 <option value="5">5 – Sharp</option>
-</select><br>
+</select>
 
 <button onclick="saveRecovery()">Save Recovery</button>
+
 </div>
 
 <div class="section">
 <h4>Reminders</h4>
 
-Workout<br>
-<input type="time" id="r_workout"><br><br>
+<label>Workout</label>
+<input type="time" id="r_workout">
 
-Supplement<br>
-<input type="time" id="r_supplement"><br><br>
+<label>Supplement</label>
+<input type="time" id="r_supplement">
 
-Sleep<br>
-<input type="time" id="r_sleep"><br><br>
+<label>Sleep</label>
+<input type="time" id="r_sleep">
 
 <button onclick="saveReminders()">Save Reminders</button>
+
 </div>
 
 </section>
 
 <script src="app.js"></script>
+
 </body>
 </html>
