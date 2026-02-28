@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Executive Mode</title>
+
+<style>
+body{
+background:#000;
+color:#fff;
+font-family:Arial;
+margin:0;
+}
+
+header{
+text-align:center;
+padding:20px;
+font-size:26px;
+background:#111;
+}
+
+nav{
+display:flex;
+justify-content:space-around;
+background:#222;
+padding:10px;
+}
+
+nav button{
+background:none;
+border:none;
+color:#aaa;
+cursor:pointer;
+}
+
+nav button:hover{
+color:#fff;
+}
+
+.tab{
+display:none;
+padding:20px;
+}
+
+.active{
+display:block;
+}
+
+.section{
+margin-bottom:20px;
+padding:15px;
+background:#111;
+border-radius:6px;
+}
+
+input,select{
+background:#222;
+color:#fff;
+border:1px solid #333;
+padding:5px;
+}
+
+button{
+background:#333;
+color:#fff;
+border:none;
+padding:6px 12px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.directive{
+font-size:18px;
+font-weight:bold;
+padding:10px;
+border-radius:6px;
+margin-bottom:15px;
+}
+
+.green{ background:#063; }
+.gray{ background:#333; }
+.red{ background:#500; }
+
+canvas{ margin-top:10px; }
+</style>
+</head>
+
+<body>
+
+<header>Executive Mode</header>
+
+<nav>
+<button onclick="showTab('dashboard')">Dashboard</button>
+<button onclick="showTab('workout')">Workout</button>
+<button onclick="showTab('measurements')">Measurements</button>
+<button onclick="showTab('recovery')">Recovery</button>
+</nav>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="tab active">
+
+<div class="section">
+<h3>Today Score</h3>
+<canvas id="scoreRing" width="160" height="160"></canvas>
+<div id="todayPercent"></div>
+</div>
+
+<div class="section">
+<h3>Weekly Compliance</h3>
+<div style="background:#222;height:8px;border-radius:4px;">
+<div id="weeklyBar" style="height:8px;width:0%;border-radius:4px;"></div>
+</div>
+<div id="weeklyPercent"></div>
+</div>
+
+<div class="section">
+<h3>Recovery Index</h3>
+<div id="performanceIndex"></div>
+</div>
+
+<div class="section">
+<h3>Latest Measurement</h3>
+<div id="latestMeasurement"></div>
+</div>
+
+<div class="section">
+<h3>Last Strength Update</h3>
+<div id="strengthUpdate"></div>
+</div>
+
+</section>
+
+<!-- WORKOUT -->
+<section id="workout" class="tab">
+
+<div id="trainingDirective" class="directive gray">
+Log recovery first
+</div>
+
+<h3 id="dayTitle"></h3>
+
+<div class="section">
+<h4>Pre Workout</h4>
+<div id="preStretch"></div>
+</div>
+
+<div class="section">
+<h4>Main Workout</h4>
+<div id="exerciseList"></div>
+</div>
+
+<div class="section">
+<h4>Post Workout</h4>
+<div id="postStretch"></div>
+</div>
+
+<div class="section">
+<h4>Reading</h4>
+<div id="readingSection"></div>
+</div>
+
+<div class="section">
+<h4>Alcohol (Pegs)</h4>
+<input type="number" id="alcoholInput" min="0" onchange="updateScore()">
+</div>
+
+</section>
+
+<!-- MEASUREMENTS -->
+<section id="measurements" class="tab">
+
+<div class="section">
+<h3>Measurements</h3>
+
+Weight<br>
+<input type="number" id="m_weight"><br><br>
+
+Waist<br>
+<input type="number" id="m_waist"><br><br>
+
+Chest<br>
+<input type="number" id="m_chest"><br><br>
+
+Arms<br>
+<input type="number" id="m_arms"><br><br>
+
+Thighs<br>
+<input type="number" id="m_thighs"><br><br>
+
+Shoulders<br>
+<input type="number" id="m_shoulders"><br><br>
+
+Body Fat<br>
+<input type="number" id="m_bodyfat"><br><br>
+
+<button onclick="saveMeasurement()">Save</button>
+</div>
+
+<div class="section">
+<h4>Ideal Comparison</h4>
+<div id="measurementComparison"></div>
+</div>
+
+</section>
+
+<!-- RECOVERY -->
+<section id="recovery" class="tab">
+
+<div class="section">
+<h3>Morning Recovery</h3>
+
+<label><input type="checkbox" id="rec_sleep"> Slept ≥ 6.5 hours</label><br>
+<label><input type="checkbox" id="rec_alarm"> Woke before alarm</label><br>
+<label><input type="checkbox" id="rec_joint"> No joint stiffness</label><br>
+<label><input type="checkbox" id="rec_sharp"> Mentally sharp within 10 min</label><br>
+<label><input type="checkbox" id="rec_vital"> Morning vitality present</label><br><br>
+
+CNS Readiness<br>
+<select id="rec_cns">
+<option value="1">1 – Foggy</option>
+<option value="2">2 – Heavy</option>
+<option value="3">3 – Normal</option>
+<option value="4">4 – Alert</option>
+<option value="5">5 – Sharp</option>
+</select><br>
+
+<button onclick="saveRecovery()">Save Recovery</button>
+</div>
+
+<div class="section">
+<h4>Reminders</h4>
+
+Workout<br>
+<input type="time" id="r_workout"><br><br>
+
+Supplement<br>
+<input type="time" id="r_supplement"><br><br>
+
+Sleep<br>
+<input type="time" id="r_sleep"><br><br>
+
+<button onclick="saveReminders()">Save Reminders</button>
+</div>
+
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
