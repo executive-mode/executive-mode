@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Executive Mode</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#000;
+    color:#fff;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-around;
+    background:#111;
+    padding:15px;
+}
+
+.nav div{
+    cursor:pointer;
+}
+
+.tab{
+    display:none;
+    padding:20px;
+}
+
+.active{
+    display:block;
+}
+
+.section{
+    background:#111;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:8px;
+}
+
+/* FIX ALIGNMENT */
+label{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:12px;
+    width:100%;
+}
+
+label span{
+    text-align:left;
+}
+
+canvas{
+    display:block;
+    margin:auto;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="nav">
+<div onclick="showTab('dashboard')">Dashboard</div>
+<div onclick="showTab('workout')">Workout</div>
+<div onclick="showTab('measurements')">Measurements</div>
+<div onclick="showTab('recovery')">Recovery</div>
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div id="dashboard" class="tab active">
+
+<div class="section">
+<h3>Today Score</h3>
+<canvas id="scoreRing" width="160" height="160"></canvas>
+<div id="todayPercent" style="text-align:center;">0%</div>
+</div>
+
+<div class="section">
+<h3>Recovery Index</h3>
+<div id="performanceIndex">Not logged</div>
+</div>
+
+<div class="section">
+<h3>Latest Measurement</h3>
+<div id="latestMeasurement">No data</div>
+</div>
+
+</div>
+
+<!-- ================= WORKOUT ================= -->
+<div id="workout" class="tab">
+
+<div class="section">
+<h3 id="dayTitle">Day 1</h3>
+</div>
+
+<div class="section">
+<h3>Pre Workout</h3>
+<div id="preStretch"></div>
+</div>
+
+<div class="section">
+<h3>Main Workout</h3>
+<div id="exerciseList"></div>
+</div>
+
+<div class="section">
+<h3>Post Workout</h3>
+<div id="postStretch"></div>
+</div>
+
+<div class="section">
+<h3>Reading</h3>
+<div id="readingSection"></div>
+</div>
+
+<div class="section">
+<h3>Alcohol (Pegs)</h3>
+<input type="number" id="alcoholInput" min="0" value="0">
+</div>
+
+</div>
+
+<!-- ================= MEASUREMENTS ================= -->
+<div id="measurements" class="tab">
+
+<div class="section">
+<h3>Measurements</h3>
+
+Weight: <input id="m_weight"><br><br>
+Waist: <input id="m_waist"><br><br>
+Chest: <input id="m_chest"><br><br>
+Arms: <input id="m_arms"><br><br>
+Thighs: <input id="m_thighs"><br><br>
+Shoulders: <input id="m_shoulders"><br><br>
+Body Fat: <input id="m_bodyfat"><br><br>
+
+<button onclick="saveMeasurement()">Save</button>
+</div>
+
+<div class="section">
+<h3>Ideal Comparison</h3>
+<div id="measurementComparison"></div>
+</div>
+
+</div>
+
+<!-- ================= RECOVERY ================= -->
+<div id="recovery" class="tab">
+
+<div class="section">
+<h3>Morning Recovery</h3>
+
+<label><input type="checkbox" id="rec_sleep"> <span>Slept ≥ 6.5h</span></label>
+<label><input type="checkbox" id="rec_alarm"> <span>Woke before alarm</span></label>
+<label><input type="checkbox" id="rec_joint"> <span>No joint stiffness</span></label>
+<label><input type="checkbox" id="rec_sharp"> <span>Mentally sharp</span></label>
+<label><input type="checkbox" id="rec_vital"> <span>Morning vitality</span></label>
+
+<br>
+
+<select id="rec_cns">
+<option value="1">1 – Low</option>
+<option value="2">2 – Below Avg</option>
+<option value="3">3 – Normal</option>
+<option value="4">4 – Good</option>
+<option value="5">5 – Peak</option>
+</select>
+
+<br><br>
+
+<button onclick="saveRecovery()">Save Recovery</button>
+
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
