@@ -48,7 +48,8 @@ body{
     border-bottom:1px solid #303030;
 }
 .section > h3{
-    margin:0;
+    margin-bottom:10px;
+    margin-top:0px;
 }
 
 .section > b{
@@ -238,15 +239,34 @@ canvas{
 <div class="section">
 <h3>Measurements</h3>
 
-Weight: <input id="m_weight"><br><br>
-Waist: <input id="m_waist"><br><br>
-Chest: <input id="m_chest"><br><br>
-Arms: <input id="m_arms"><br><br>
-Thighs: <input id="m_thighs"><br><br>
-Shoulders: <input id="m_shoulders"><br><br>
-Body Fat: <input id="m_bodyfat"><br><br>
+<div class="sec-div">  
+    <label>Weight:</label> 
+    <input id="m_weight">
+</div>
+<div class="sec-div">  
+    <label>Waist:</label>
+    <input id="m_waist">
+</div>
+<div class="sec-div">  
+    <label>Chest:</label>
+    <input id="m_chest">
+</div>
+<div class="sec-div">  
+    <label>Arms:</label>
+    <input id="m_arms">
+</div>
+<div class="sec-div">  
+    <label>Thighs:</label>
+    <input id="m_thighs"><br><br>
+</div>
+<div class="sec-div">  
+    <label>Shoulders:</label> <input id="m_shoulders">
+</div>
+<div class="sec-div">  
+    <label>Body Fat:</label> <input id="m_bodyfat">
+</div>
 
-<button onclick="saveMeasurement()">Save</button>
+<button onclick="saveMeasurement()" class="SaveBtn">Save</button>
 </div>
 
 <div class="section">
