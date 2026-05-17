@@ -49,13 +49,20 @@ body{
 .section > h3{
     margin:0;
 }
+.BoxGrid{
+    padding: 10px 0;
+}
 /* FIX ALIGNMENT */
 label{
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    gap:12px;
-    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    width: calc(100% - 16px);
+    padding: 8px;
+    background: #000;
+    margin-bottom: 9px;
+    border-radius: 8px;
 }
 
 label span{
@@ -141,22 +148,22 @@ canvas{
 
 <div class="section">
 <h3>Pre Workout</h3>
-<div id="preStretch"></div>
+<div id="preStretch" class="BoxGrid"></div>
 </div>
 
 <div class="section">
 <h3>Main Workout</h3>
-<div id="exerciseList"></div>
+<div id="exerciseList" class="BoxGrid"></div>
 </div>
 
 <div class="section">
 <h3>Post Workout</h3>
-<div id="postStretch"></div>
+<div id="postStretch" class="BoxGrid"></div>
 </div>
 
 <div class="section">
 <h3>Reading</h3>
-<div id="readingSection"></div>
+<div id="readingSection" class="BoxGrid"></div>
 </div>
 
 <div class="section">
