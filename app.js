@@ -63,7 +63,7 @@ ctx.stroke();
 
 ctx.beginPath();
 ctx.arc(80,80,60,0,(exec/100)*2*Math.PI);
-ctx.strokeStyle=exec<50?"red":exec<75?"orange":"green";
+ctx.strokeStyle=exec<50?"red":exec<75?"orange":"#0becb2";
 ctx.lineWidth=10;
 ctx.stroke();
 
