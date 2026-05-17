@@ -17,12 +17,17 @@ body{
     display:flex;
     justify-content:space-around;
     background:#111;
-    padding: 15px;
+    padding: 15px 0px;
 }
     
 
 .nav div{
     cursor:pointer;
+    border-right:1px solid #666666;
+    padding: 0px 8px;
+}
+.nav div::last-child{
+    border-right:none;
 }
 
 .tab{
@@ -36,11 +41,12 @@ body{
 
 .section{
     background:#111;
-    padding:15px;
+    padding:15px 8px;
     margin-bottom:15px;
     border-radius:8px;
+    border-bottom:1px solid #303030;
 }
-
+.secttion > h3{margin:0;}
 /* FIX ALIGNMENT */
 label{
     display:flex;
