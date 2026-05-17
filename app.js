@@ -8,6 +8,28 @@ if(tabId==="dashboard") renderDashboard();
 if(tabId==="workout") loadWorkout();
 if(tabId==="measurements") renderMeasurement();
 }
+//=================Nav =================
+function showTab(tabId, el){
+
+// remove active from all nav items
+document.querySelectorAll('.nav div')
+.forEach(tab => tab.classList.remove('active'));
+
+// add active to clicked item
+if(el) el.classList.add('active');
+
+// tab switching
+document.querySelectorAll('.tab')
+.forEach(t => t.classList.remove('active'));
+
+let tabEl = document.getElementById(tabId);
+
+if(tabEl) tabEl.classList.add('active');
+
+if(tabId==="dashboard") renderDashboard();
+if(tabId==="workout") loadWorkout();
+if(tabId==="measurements") renderMeasurement();
+}
 
 // ================= STORAGE =================
 function getData(key){
