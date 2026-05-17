@@ -51,7 +51,10 @@ body{
 }
 
 .section > b{
-    margin:0;
+    margin-bottom: 10px;
+    display: flex;
+    font-size: 14px;
+}
 }
     
 .BoxGrid{
@@ -81,6 +84,28 @@ canvas{
     display:block;
     margin:auto;
 }
+.SaveBtn{
+    background: #0becb2;
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 8px;
+    text-transform: uppercase;
+    max-width: 375px;
+}
+.SelectBox{
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    max-width:375px;
+}
+    .inputBox{
+    padding: 10px;
+    width: calc(100% - 20px);
+    margin-top: 8px;
+    font-weight: bold;
+    }
 </style>
 
 </head>
@@ -176,7 +201,7 @@ canvas{
 
 <div class="section">
 <h3>Alcohol (Pegs)</h3>
-<input type="number" id="alcoholInput" min="0" value="0">
+<input type="number" id="alcoholInput" min="0" value="0" class="inputBox">
 </div>
 
 </div>
@@ -219,18 +244,17 @@ Body Fat: <input id="m_bodyfat"><br><br>
 
 <br>
 
-<select id="rec_cns">
+<select id="rec_cns" class="SelectBox">
 <option value="1">1 – Low</option>
 <option value="2">2 – Below Avg</option>
 <option value="3">3 – Normal</option>
 <option value="4">4 – Good</option>
 <option value="5">5 – Peak</option>
 </select>
-
 <br><br>
 
-<button onclick="saveRecovery()">Save Recovery</button>
-
+<button onclick="saveRecovery()" class="SaveBtn">Save Recovery</button>
+    
 </div>
 
 </div>
