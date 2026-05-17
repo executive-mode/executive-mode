@@ -303,7 +303,7 @@ let mainScore = main.length
 : 0;
 let stretchScore = (pre.length + post.length)
 ? ((count(pre)+count(post)) /
-(pre.length+post.length))*20
+(pre.length+post.length))*30
 : 0;
 let readScore = read.length
 ? (count(read)/read.length)*10
