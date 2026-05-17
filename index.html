@@ -64,6 +64,14 @@ body{
 .BoxGrid .section{
     padding: 0;
 }
+input[type="checkbox"]{
+    border: 1px solid #ccc;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+}
+
 /* FIX ALIGNMENT */
 label{
     display: flex;
@@ -252,7 +260,7 @@ Body Fat: <input id="m_bodyfat"><br><br>
 <div id="recovery" class="tab">
 
 <div class="section">
-<h3>Morning Recovery</h3>
+<h3 style="margin-bottom:10px;">Morning Recovery</h3>
 
 <label><input type="checkbox" id="rec_sleep"> <span>Slept ≥ 6.5h</span></label>
 <label><input type="checkbox" id="rec_alarm"> <span>Woke before alarm</span></label>
