@@ -215,14 +215,14 @@ container.innerHTML = html;
 let pre = document.getElementById("preStretch");
 if(pre){
 pre.innerHTML = simpleBlock(
-["Neck Rolls","Shoulder Circles","Hip Circles","Ankle Rotations"],"pre"
+["Neck Rolls","Shoulder Circles","Hip Circles","Ankle Rotations","Cat Camel", "Thread The Needle", "Bird Dog","Hip Hinge Drill"],"pre"
 );
 }
 
 let post = document.getElementById("postStretch");
 if(post){
 post.innerHTML = simpleBlock(
-["Hamstring Stretch","Hip Flexor Stretch","Deep Squat Hold","Breathing"],"post"
+["Child Pose","Doorway Pec Stretch","Lat Stretch","Hip Flexor","Deep Squat Hold","Crocodile Breathing"],"post"
 );
 }
 
