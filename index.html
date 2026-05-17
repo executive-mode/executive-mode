@@ -49,8 +49,16 @@ body{
 .section > h3{
     margin:0;
 }
+
+.section > b{
+    margin:0;
+}
+    
 .BoxGrid{
     padding: 10px 0;
+}
+.BoxGrid .section{
+    padding: 0;
 }
 /* FIX ALIGNMENT */
 label{
@@ -153,7 +161,7 @@ canvas{
 
 <div class="section">
 <h3>Main Workout</h3>
-<div id="exerciseList"></div>
+<div id="exerciseList" class="BoxGrid"></div>
 </div>
 
 <div class="section">
