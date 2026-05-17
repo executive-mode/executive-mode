@@ -93,6 +93,7 @@ canvas{
     border-radius: 8px;
     text-transform: uppercase;
     max-width: 375px;
+    cursor: pointer;
 }
 .SelectBox{
     width: 100%;
@@ -113,7 +114,7 @@ canvas{
 <body>
 
 <div class="nav">
-<div onclick="showTab('dashboard')">Dashboard</div>
+<div onclick="showTab('dashboard')" class="active">Dashboard</div>
 <div onclick="showTab('workout')">Workout</div>
 <div onclick="showTab('measurements')">Measurements</div>
 <div onclick="showTab('recovery')">Recovery</div>
