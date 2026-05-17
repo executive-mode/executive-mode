@@ -215,7 +215,7 @@ container.innerHTML = html;
 let pre = document.getElementById("preStretch");
 if(pre){
 pre.innerHTML = simpleBlock(
-["Neck Rolls","Shoulder Circles","Hip Circles","Ankle Rotations","Cat Camel", "Thread The Needle", "Bird Dog","Hip Hinge Drill"],"pre"
+["Neck Rolls","Shoulder Circles","Hip Circles","Ankle Rotations","Cat Camel","Thread The Needle","Bird Dog","Hip Hinge Drill"],"pre"
 );
 }
 
