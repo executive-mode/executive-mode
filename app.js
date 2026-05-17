@@ -298,27 +298,30 @@ let count = (list)=>[...list].filter(c=>c.checked).length;
 // let alcoholScore = alcohol===0 ? 10 : 0;
 
 // let final = Math.round(mainScore + stretchScore + readScore + alcoholScore);
-let mainScore = main.length ? (count(main)/main.length)*60 : 0;
-let stretchScore = (pre.length+post.length) ?
-((count(pre)+count(post))/(pre.length+post.length))*20 : 0;
-
-let readScore = read.length ? (count(read)/read.length)*10 : 0;
+let mainScore = main.length
+? (count(main)/main.length)*60
+: 0;
+let stretchScore = (pre.length + post.length)
+? ((count(pre)+count(post)) /
+(pre.length+post.length))*20
+: 0;
+let readScore = read.length
+? (count(read)/read.length)*10
+: 0;
 
 let alcoholData = getData("alcohol");
 let alcohol = alcoholData[today()] || 0;
 
-let anyActivity =
-count(main) > 0 ||
-count(pre) > 0 ||
-count(post) > 0 ||
-count(read) > 0;
-
-let alcoholScore = (anyActivity && alcohol === 0) ? 10 : 0;
+// penalty only
+let alcoholPenalty = alcohol > 2 ? -10 : 0;
 
 let final = Math.round(
-mainScore + stretchScore + readScore + alcoholScore
+mainScore +
+stretchScore +
+readScore +
+alcoholPenalty
 );
-  
+
 final = Math.max(0, Math.min(100, final));
 
 let data = getData("execution");
