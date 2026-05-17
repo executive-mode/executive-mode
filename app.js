@@ -288,16 +288,37 @@ let read = document.querySelectorAll("input[data-type='read']");
 
 let count = (list)=>[...list].filter(c=>c.checked).length;
 
+// let mainScore = main.length ? (count(main)/main.length)*60 : 0;
+// let stretchScore = (pre.length+post.length) ?
+// ((count(pre)+count(post))/(pre.length+post.length))*20 : 0;
+// let readScore = read.length ? (count(read)/read.length)*10 : 0;
+
+// let alcoholData = getData("alcohol");
+// let alcohol = alcoholData[today()] || 0;
+// let alcoholScore = alcohol===0 ? 10 : 0;
+
+// let final = Math.round(mainScore + stretchScore + readScore + alcoholScore);
 let mainScore = main.length ? (count(main)/main.length)*60 : 0;
 let stretchScore = (pre.length+post.length) ?
 ((count(pre)+count(post))/(pre.length+post.length))*20 : 0;
+
 let readScore = read.length ? (count(read)/read.length)*10 : 0;
 
 let alcoholData = getData("alcohol");
 let alcohol = alcoholData[today()] || 0;
-let alcoholScore = alcohol===0 ? 10 : 0;
 
-let final = Math.round(mainScore + stretchScore + readScore + alcoholScore);
+let anyActivity =
+count(main) > 0 ||
+count(pre) > 0 ||
+count(post) > 0 ||
+count(read) > 0;
+
+let alcoholScore = (anyActivity && alcohol === 0) ? 10 : 0;
+
+let final = Math.round(
+mainScore + stretchScore + readScore + alcoholScore
+);
+  
 final = Math.max(0, Math.min(100, final));
 
 let data = getData("execution");
@@ -306,6 +327,9 @@ setData("execution", data);
 
 renderDashboard();
 }
+
+
+
 
 // ================= MEASUREMENTS =================
 function saveMeasurement(){
