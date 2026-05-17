@@ -1,14 +1,4 @@
 // ================= BASIC =================
-function showTab(tabId){
-document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-let el = document.getElementById(tabId);
-if(el) el.classList.add('active');
-
-if(tabId==="dashboard") renderDashboard();
-if(tabId==="workout") loadWorkout();
-if(tabId==="measurements") renderMeasurement();
-}
-//=================Nav =================
 function showTab(tabId, el){
 
 // remove active from all nav items
@@ -30,6 +20,7 @@ if(tabId==="dashboard") renderDashboard();
 if(tabId==="workout") loadWorkout();
 if(tabId==="measurements") renderMeasurement();
 }
+
 
 // ================= STORAGE =================
 function getData(key){
